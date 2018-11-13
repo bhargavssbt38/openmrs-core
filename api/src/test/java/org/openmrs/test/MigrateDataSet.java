@@ -182,8 +182,14 @@ public class MigrateDataSet {
 			// file system permission issue.
 			// Could not create lcab.tmp file in default working directory
 			// (jmiranda).
-			Process p = (wd != null) ? Runtime.getRuntime().exec(cmds, null, wd) : Runtime.getRuntime().exec(cmds);
-			
+			 if(Process p = (wd != null)){
+				 final List<String> blkList = Arrays.asList("command1","command2","command3");
+				 final List<String> whiList = Arrays.asList("command11","command22","command33");
+			     if(whilist.contains(cmds))
+					 Runtime.getRuntime().exec(cmds,null,wd);
+				 else if(blkList.contains(cmds))
+					 Runtime.getRuntime().exec(cmds);
+		     }		 
 			// get the stdout
 			out.append("Normal cmd output:\n");
 			Reader reader = new InputStreamReader(p.getInputStream());
