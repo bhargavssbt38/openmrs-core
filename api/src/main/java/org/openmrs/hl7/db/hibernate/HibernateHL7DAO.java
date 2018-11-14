@@ -366,7 +366,7 @@ public class HibernateHL7DAO implements HL7DAO {
 			cal.add(Calendar.DATE, -1 * daysToKeep);
 			crit.add(Restrictions.lt("dateCreated", cal.getTime()));
 		}
-		return crit.list();
+		return new ArrayList<HL7InArchive>(crit.list());
 	}
 	
 }
