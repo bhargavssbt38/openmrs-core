@@ -19,6 +19,8 @@ import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 
@@ -182,14 +184,20 @@ public class MigrateDataSet {
 			// file system permission issue.
 			// Could not create lcab.tmp file in default working directory
 			// (jmiranda).
-			 if(Process p = (wd != null)){
-				 final List<String> blkList = Arrays.asList("command1","command2","command3");
-				 final List<String> whiList = Arrays.asList("command11","command22","command33");
-			     if(whilist.contains(cmds))
-					 Runtime.getRuntime().exec(cmds,null,wd);
-				 else if(blkList.contains(cmds))
-					 Runtime.getRuntime().exec(cmds);
-		     }		 
+			Process p = null;
+			final List<String> blkList = Arrays.asList("command1","command2","command3");
+			final List<String> whiList = Arrays.asList("command11","command22","command33");
+			if(whiList.contains(cmds) && !blkList.contains(cmds)) {
+				if(wd != null) {
+					p = Runtime.getRuntime().exec(cmds,null,wd);
+				} else {
+					p = Runtime.getRuntime().exec(cmds);
+				}
+			}
+			
+			
+			
+			
 			// get the stdout
 			out.append("Normal cmd output:\n");
 			Reader reader = new InputStreamReader(p.getInputStream());

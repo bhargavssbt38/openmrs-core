@@ -10,6 +10,7 @@
 package org.openmrs.migration;
 
 import java.io.IOException;
+
 import java.io.StringReader;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -274,6 +275,9 @@ public class MigrationHelper {
 						user.addRole(role);
 					}
 				}
+				
+				
+				
 				us.createUser(user, pass);
 			}
 			if (user == null) {
